@@ -1,0 +1,21 @@
+<h1>Posts</h1>
+<%= link_to "New Post", new_post_path, class: "btn btn-primary", style: "font-weight: bold", data: {name: "asdfasdf"}, id:"new_post_id"%>
+<table class="table table-bordered">
+	<tr>
+		<th>Title</th>
+		<th>body</th>
+		<th></th>
+	</tr>
+	<%@posts.each do |post|%>
+		<tr>
+			<td><%= post.title%></td>
+			<td><%= post.body%></td>
+			<td>
+				<%= link_to "View", post_path(post), class: "btn btn-info"%>
+				<%= link_to "Edit", edit_post_path(post), class: "btn btn-warning"%>
+				<%= button_to "Delete", post, data: { confirm: "Are you sure?" } , method: :delete, class: "btn btn-danger"%>
+			</td>
+
+		</tr>
+	<% end -%>
+</table>

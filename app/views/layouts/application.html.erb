@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="container">
+      <%= link_to "Home", root_path%>
+      <%= link_to "Articles", articles_path%>
+      <%= link_to "Posts", posts_path%>
+      <% if user_signed_in?%>
+        <%= button_to "Log Out", destroy_user_session_path, method: :delete%>
+      <%else%>
+        <%= link_to "Login", new_user_session_path%>
+        <%= link_to "Register", new_user_registration_path%>
+      <% end -%>
+      <div>
+        <%if notice.present?%>
+        <div class="alert alert-success"><%=notice%></div>
+        <% end -%>
+        <%if alert.present?%>
+        <div class="alert alert-danger"><%=alert%></div>
+        <% end -%>
+        <%= yield %>
+        
+      </div>
+      <% "asdfasdf"  %>
+    </div>
+  </body>
+</html>
